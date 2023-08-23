@@ -1,13 +1,20 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Clickup Task Creator'
+description: 'To create clickup incidents out of dependabot alerts'
+
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  clickup_api_token:
+    description: 'Clickup API Token for Security Incidents space'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  pull_request_title:
+    description: 'PR Title to create clickup task with'
+    required: true
+  team_id:
+    description: 'Deriv Team ID'
+    required: true
+  list_id:
+    description: 'Dependabot Incident List ID'
+    required: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
