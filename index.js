@@ -63,6 +63,7 @@ async function create_task_axios(clickup_api_token, pull_request_title, list_id,
     
     console.log(json)
     console.log(json.status)
+    console.log(`LIST_ID: ${list_id}`)
 }
 
 
