@@ -16,7 +16,9 @@ try {
 
     create_task_axios(clickup_api_token, pull_request_title, list_id, query)
 } catch (error) {
+    const list_id = core.getInput('list_id', { required: true });
     core.setFailed(error.message);
+    console.log(`LIST_ID: ${list_id}`)
 }
 
 
