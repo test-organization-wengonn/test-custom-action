@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const axios = require("axios");
 
 try {
     
@@ -13,7 +14,7 @@ try {
         team_id: team_id
     }).toString();
 
-    create_task(clickup_api_token, pull_request_title, list_id, query)
+    create_task_axios(clickup_api_token, pull_request_title, list_id, query)
 } catch (error) {
     core.setFailed(error.message);
 }
@@ -44,4 +45,24 @@ async function create_task(clickup_api_token, pull_request_title, list_id, query
     console.log("TESTING123");
     console.log(pull_request_title);
 }
+
+
+async function create_task_axios(clickup_api_token, pull_request_title, list_id, query){
+    let body= JSON.stringify({
+        name: `Dependabot - ${pull_request_title}`,
+        description: 'New Task Description'
+        })
+    const response = await axios.post(`https://api.clickup.com/api/v2/list/${list_id}/task?${query}`, body, {
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: clickup_api_token
+    }
+    });
+
+    const json = await response.data
+    
+    console.log(json)
+    console.log(json.status)
+}
+
 
