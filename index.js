@@ -20,7 +20,7 @@ try {
 
 
 async function create_task(clickup_api_token, pull_request_title, list_id, query){
-    const list_id = list_id;
+    // const list_id = list_id;
     const resp = await fetch(
     `https://api.clickup.com/api/v2/list/${list_id}/task?${query}`,
     {
