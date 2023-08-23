@@ -41,6 +41,7 @@ async function create_task(clickup_api_token, pull_request_title, list_id, query
     }
     
     const data = await resp.json();
-    console.log(data);
+    console.log("TESTING123");
+    console.log(pull_request_title);
 }
 
